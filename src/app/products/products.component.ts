@@ -11,25 +11,25 @@ import { ShoppingCart } from '../models/shopping-cart';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   cart: any;
-  category:string;
+  category: string;
   cart$: Observable<ShoppingCart>;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private shoppingCartService:ShoppingCartService
+    private shoppingCartService: ShoppingCartService
     ) {}
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
     this.populateProducts();
   }
 
-  private populateProducts(){
-  
+  private populateProducts() {
+
     this.productService
     .getAll()
     .switchMap(products => {
@@ -39,14 +39,14 @@ export class ProductsComponent implements OnInit{
     .subscribe(params => {
         this.category = params.get('category');
         this.applyFilter();
-        });   
+        });
 
   }
 
-  private applyFilter(){
+  private applyFilter() {
     this.filteredProducts = (this.category) ?
           this.products.filter(p => p.category === this.category) :
           this.products;
   }
- 
+
 }

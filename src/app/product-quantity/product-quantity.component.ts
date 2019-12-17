@@ -8,18 +8,18 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ProductQuantityComponent {
   @Input('product') product;
-  
+
   @Input('shopping-cart') shoppingCart;
   constructor(private cartService: ShoppingCartService) { }
 
-  addToCart(){
+  addToCart() {
     this.cartService.addToCart(this.product);
   }
-  removeFromCart(){
+  removeFromCart() {
     this.cartService.removeFromCart(this.product);
   }
-  
 
-  
+
+
 
 }

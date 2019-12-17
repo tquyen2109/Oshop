@@ -6,5 +6,5 @@ export interface Product {
     category: string;
     $key: string;
     imageUrl: string;
-    subcription: Subscription
+    subcription: Subscription;
 }

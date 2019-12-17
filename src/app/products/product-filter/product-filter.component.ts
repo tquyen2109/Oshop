@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/category.service';
 export class ProductFilterComponent implements OnInit {
   categories$;
  @Input('category') category;
-  constructor(categoryService: CategoryService) { 
+  constructor(categoryService: CategoryService) {
     this.categories$ = categoryService.getAll();
 
   }

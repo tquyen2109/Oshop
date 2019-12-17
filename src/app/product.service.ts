@@ -9,23 +9,19 @@ import { Product } from './models/product';
 export class ProductService {
 
   constructor(private db: AngularFireDatabase) { }
-  create(product)
-  {
+  create(product) {
    return this.db.list('/products').push(product);
   }
-  getAll(): Observable<Product[]>{
+  getAll(): Observable<Product[]> {
     return this.db.list('/products');
   }
-  get(productId)
-  {
+  get(productId) {
     return this.db.object('/products/' + productId);
   }
-  update(productId, product)
-  {
+  update(productId, product) {
     this.db.object('/products/' + productId).update(product);
   }
-  delete(productId)
-  {
+  delete(productId) {
     return this.db.object('/products/' + productId).remove();
   }
 }
